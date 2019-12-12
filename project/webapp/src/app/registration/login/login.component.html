@@ -1,0 +1,90 @@
+<app-header></app-header>
+<section class="container  mt-5  "><br><br>
+  <div class="row">
+    <div class="col-lg-3 col-sm-12">
+    </div>
+    <div class="col-lg-5 col-sm-12 border bg-light "> <br><br>
+      <form [formGroup]="loginForm" method="post">
+        <h1>Login</h1><br>
+        <div> <span [style.visibility]="'hidden'" class="alert alert-danger small"></span>
+          <span class="alert alert-danger small" *ngIf="!loginStatus">
+            {{error}}
+          </span>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="name">
+                <span class="text-danger">* </span>UserId : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+              </label>
+              <input type="text" 
+                     id="name" 
+                     name="userId" 
+                     formControlName="userId" /><br>
+              <div>
+                <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="loginForm.get('userId').invalid && loginForm.get('userId').touched">
+                  Please enter userid !
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="pwd">
+                <span class="text-danger">* </span>Password : &nbsp;&nbsp;
+              </label>
+              <input type="password" 
+                     id="pwd" 
+                     name="passwrd" 
+                     formControlName="passwrd" />
+              <div>
+                <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="loginForm.get('passwrd').invalid && loginForm.get('passwrd').touched">
+                  Please enter password !
+                </span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between ">
+          <div class="mb-4 ">&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" 
+                    type="button" 
+                    (click)="onSubmit(loginForm)"
+                    [disabled]="!loginForm.valid">
+                        Login
+              </button>
+          </div>
+          <div class="mb-4 ">
+              &nbsp;&nbsp;&nbsp; <a (click)="forgetUserId()" class="text-success">Forget UserId? </a> / 
+            <a (click)="forgetPassword()" class="text-success">Forget Password? </a>&nbsp;&nbsp;&nbsp;
+          </div>
+        </div>
+      </form><br><br>
+    </div>
+    <div class="col-lg-3 col-sm-12">
+    </div>
+  </div>
+</section>
+
+<footer class="footer fixed-bottom">
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+    <div class="footer-bottom ">
+      <div class="row ">
+        <div>
+          Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="ml-auto">
+          Follow us on:
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-instagram"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</footer>

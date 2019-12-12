@@ -1,0 +1,17 @@
+export interface User {
+    firstName: string,
+    lastName: string,
+    age: number,
+    gender: string,
+    contactNumber: number,
+    userId: string,
+    password: string,
+    userType: string,
+    status: string,
+    secretQuestionOne: string,
+    secretAnswerOne: string,
+    secretQuestionTwo: string,
+    secretAnswerTwo: string,
+    secretQuestionThree: string,
+    secretAnswerThree: string,
+}

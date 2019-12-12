@@ -1,0 +1,74 @@
+<app-header></app-header>
+<br>
+
+
+<div class="jumbotron container">
+        <div class="container" >
+                <form  [formGroup]="updateOfferForm">
+                    <div class="row d-flex justify-content-center"> 
+                        <div class="form-inline col-6">
+                            <label class="mr-3" for="name-form">
+                                Enter Offer date: 
+                            </label>
+                            <input type="text" 
+                                   class="form-control col" 
+                                   id="name-form" 
+                                   formControlName="offerDate">
+                            <div>
+                                <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                                <span class="text-danger small" *ngIf="updateOfferForm.get('offerDate').invalid && updateOfferForm.get('offerDate').touched">
+                                    Please enter valid Date
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-3 p-0 m-0">
+                                <button class="btn btn-primary ml-auto" 
+                                        type="submit" 
+                                        value="submit" 
+                                        (click)="fetchOffer(updateOfferForm)">
+                                Fetch Offers</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+<div class="container table-responsive" *ngIf="this.offerList.length != 0">
+    <table class="container table text-dark text-center bg-light" >
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Offer Percentage</th>
+                <th>Product</th>
+                <th>option 1</th>
+                <th>option 2</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let offer of offerList">
+              <td>{{offer.offerDate | date: 'dd/MM/yyyy'}}</td>
+              <td>{{offer.discountPercent}}</td>
+              <td>{{offer.productCode}} </td>
+              <td><a role="button" (click)="editOffer(offer.id)"><i class="icon-delete mb-1 material-icons align-middle">edit</i>Edit</a></td>
+              <td><a role="button" (click)="deleteOffer(offer.id)"><i class="icon-delete mb-1 material-icons align-middle">delete</i>Delete</a></td>
+            </tbody>
+    </table>
+</div>
+
+
+<footer class="footer fixed-bottom">
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+          <div class="footer-bottom ">
+            <div class="row ">
+              <div>
+                Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+              </div>
+              <div class="ml-auto">
+                Follow us on:
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </footer>
+    

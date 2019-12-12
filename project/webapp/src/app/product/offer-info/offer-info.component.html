@@ -1,0 +1,84 @@
+<app-header></app-header>
+<br>
+
+<div class="container-fluid" *ngIf="!isBillGenerated">
+    <div class="jumbotron">
+       
+        <form class="border p-4" [formGroup]="offerForm" method="post">
+            <div class="row">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label for="name-form">
+                        Enter date:
+                    </label>
+                    <input type="text" 
+                           class="form-control" 
+                           id="name-form" 
+                           formControlName="offerDate">
+                    <div>
+                        <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                        <span class="text-danger small" *ngIf="offerForm.get('offerDate').invalid && offerForm.get('offerDate').touched">
+                            Please enter valid date:
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <div class="row"> 
+                        <label for="type">
+                            Enter Product Code:
+                        </label>
+                    </div>
+                    <div class="row ">
+                        <select #productCode class="form-control" formControlName="productCode"  >
+
+                            <option value={{c.code}} *ngFor="let c of code ">{{c.name}} - {{c.code}} </option>
+                        </select>
+                    </div>
+                </div>&nbsp;&nbsp;
+               
+          <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label for="brand-form">
+                        Enter Discount Percent
+                    </label>
+                    <input type="text" 
+                           class="form-control" 
+                           id="brand-form" 
+                           formControlName="discountPercent">
+                    <div>
+                        <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                        <span class="text-danger small" *ngIf="offerForm.get('discountPercent').invalid && offerForm.get('discountPercent').touched">
+                            Please enter valid discount percent
+                        </span>
+                    </div>
+            </div>
+            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button class="btn btn-primary ml-auto" 
+                         type="submit" 
+                         value="submit" 
+                         (click)="update(offerForm)">
+                 Edit offer</button>
+                 <span class="badge badge-danger" *ngIf="error != null">{{error}}</span>
+             </div>
+        </div>  
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer fixed-bottom">
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+          <div class="footer-bottom ">
+            <div class="row ">
+              <div>
+                Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+              </div>
+              <div class="ml-auto">
+                Follow us on:
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </footer>
+    

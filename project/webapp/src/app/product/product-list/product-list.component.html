@@ -1,0 +1,111 @@
+<app-header></app-header>
+<br>
+ 
+ <div class="container-fluid">
+      <div class="row">
+         <div class="collapse in" id="sidebar">
+            <div class="list-group panel">
+                <div class="bg-dark list-group-item collapsed">Hello {{firstName}} ,</div>
+                <a class="bg-dark list-group-item collapsed" (click)="sortByPopularity()">Sort By popularity</a>
+                <a class="bg-dark list-group-item collapsed" (click)="sortByAvailability()" >Sort By Availability</a>
+                <a class="bg-dark list-group-item collapsed" (click)="sortByName()"  >Sort By Name</a>
+                <a class="bg-dark list-group-item collapsed" (click)="sortByPrice()">Sort By Price </a>
+            </div> 
+          </div>
+          <a href="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-lg"></i></a>
+          <div class="col-sm-12 col-md-12 col-lg-4 input-group mb-3 ml-auto">
+              <app-search (searchEmitterEvent)="filterItems($event)"></app-search>
+          </div>
+        </div>
+
+        <div class="row mt-5" >
+            <ng-container *ngFor="let product of filterProduct">
+                <div class="col-sm-12 col-md-6 col-lg-4 p-4 ">
+                    <div class="card" >
+
+
+                        <div class="row ">
+                            <div class="col-lg-5 col-md-6 col-sm-6">
+                              <img class="card-img" src={{product.image}} height="350px" alt="image">
+                            </div>
+                            <div class="col-lg-7 col-md-6 col-sm-6">
+                              <div class="card-body">
+                                <div class="row ">
+                                  <div>
+                                    <h4 class="card-title mr-auto">{{product.name}}   <span class="badge badge-danger ml-auto" *ngFor="let offer of offerProducts"><b *ngIf="offer.productCode == product.code">{{offer.discountPercent}}% off</b></span></h4>
+                                    <span class="badge badge-success" *ngIf="product.stockCount != 0">Stock Available</span>
+                                    <span class="badge badge-danger" *ngIf="product.stockCount == 0">Stock Unavailable</span>
+                                  </div>
+                                </div>
+                                <div class="row ">
+                                  <div><b>No. of stocks available : </b><span class="badge badge-info"> {{product.stockCount}}</span>
+                                  </div>
+                                  <div class="ml-auto"></div>
+                                </div>
+                                <div class="row  d-flex justify-content-between">
+                                  <div>
+                                    <div><b>Product Brand : </b>{{ product.brand }}</div>
+                                    <div *ngIf = "product.type == 1"><b>Product Type : </b>Home and Kitchen</div>
+                                    <div *ngIf = "product.type == 2"><b>Product Type : </b> Bakery</div>
+                                  </div>
+                                </div>
+                                <div class="row d-flex justify-content-between">
+                                  <div>
+                                    <h6><b>Rate per quantity : &#8377; </b>{{product.ratePerQuantity }}</h6>
+                                  </div>
+                                </div>
+                                <div class="row d-flex justify-content-between">
+                                    <div>
+                                      <h6><b>Date of expiry : </b>{{product.dateOfExpiry | date: 'dd/MM/yyyy' }}</h6>
+                                    </div>
+                                </div>                               
+                                <div class="row d-flex justify-content-between">
+                                    <div class="ml-auto">
+                                        <button class="btn btn-primary" (click) ="addToPurchaseList(product.code)"  *ngIf="userType == 'U'">Get location</button>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-between">
+                                  <div class="ml-auto">
+                                      <button class="btn btn-primary" (click) ="editProductClick(product.code)" *ngIf="userType == 'A' || userType == 'O'">Edit Product</button><p></p>
+                                  </div>
+                              </div>
+                              <div class="row d-flex justify-content-between">
+                                  <div  class="ml-auto">
+                                      <button class="btn btn-danger" (click) ="deleteProductClick(product.code)" *ngIf="userType == 'A' || userType == 'O'">Delete Product</button>
+                                  </div>
+                              </div>
+                              <div class="row d-flex justify-content-between">
+                                    <div *ngIf = "addToPurchaseListStatus && product.code == productCode">
+                                        <h6 id="location-background-row" >PRODUCT AVAILABLE IN :
+                                                        <p>AISLE : {{product.aisle}} / SHELF : {{product.shelf}}</p></h6>
+                                    </div>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+
+    <footer class="footer ">
+      <nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+        <div class="footer-bottom ">
+          <div class="row ">
+            <div>
+              Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="ml-auto">
+              Follow us on:
+              <a href="#" class="fa fa-facebook"></a>
+              <a href="#" class="fa fa-twitter"></a>
+              <a href="#" class="fa fa-instagram"></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </footer>

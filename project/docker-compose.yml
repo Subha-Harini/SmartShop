@@ -1,0 +1,76 @@
+version: '3'
+services:
+  smartshop-mysql:
+    image: mysql:8.0.18
+    ports:
+      - "33061:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - D:\project\smartshop:/var/lib/mysql
+      - ./dbscripts:/docker-entrypoint-initdb.d
+      
+  eureka-discovery-server:
+    image: eureka-discovery-app
+    build: microservices/eureka-discovery-server/.
+    ports:
+      - 8761:8761
+      
+  authentication-service:
+    image: authentication-app
+    build: microservices/authentication-service/.
+    ports:
+      - 8091:8091
+    depends_on:
+      - smartshop-mysql
+      - eureka-discovery-server
+    links:
+      - smartshop-mysql
+      - eureka-discovery-server
+      
+  product-service:
+    image: product-app
+    build: microservices/product-service/.
+    ports:
+      - 8095:8095
+    depends_on:
+      - smartshop-mysql
+      - eureka-discovery-server
+    links:
+      - smartshop-mysql
+      - eureka-discovery-server
+      
+  signup-service:
+    image: signup-app
+    build: microservices/signup-service/.
+    ports:
+      - 8093:8093
+    depends_on:
+      - smartshop-mysql
+      - eureka-discovery-server
+    links:
+      - smartshop-mysql
+      - eureka-discovery-server   
+      
+  zuul-gateway:
+    image: zuul-gateway-app
+    build: microservices/zuul-gateway/.
+    ports:
+      - 8083:8083
+    depends_on:
+      - authentication-service
+      - product-service
+      - signup-service
+    links:
+      - authentication-service 
+      - product-service
+      - signup-service   
+            
+  angular-learn:
+    image: angular-learn
+    build: webapp/.
+    ports:
+      - 4200:80
+    links:
+      - zuul-gateway 
+       

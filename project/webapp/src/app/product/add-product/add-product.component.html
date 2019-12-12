@@ -1,0 +1,255 @@
+<app-header></app-header><br><br>
+
+
+<section class="container-fluid  mt-5 bg-light">
+	<br><br>
+	<h1>Add Product</h1>
+	<form class="border  p-4" [formGroup]="addProductForm" method="post">
+		<div class="row">
+			<!-- <div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="code-form">
+				   Enter code:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="code-form" 
+					   formControlName="code">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('code').invalid && addProductForm.get('code').touched">
+						Please enter valid code !
+					</span>
+				</div>
+			</div> -->
+			<div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="name-form">
+					Enter Product Name
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="name-form" 
+					   formControlName="name">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('name').invalid && addProductForm.get('name').touched">
+						Please enter valid product name!
+					</span>
+				</div>
+			</div>
+			<div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<div class="row"> 
+					<label for="type">
+						Enter Product Type
+					</label>
+				</div>
+				<div class="row ">
+					<select class="form-control" formControlName="type">
+            			<option value="1">1-Home and Kitchen</option>
+            			<option value="2">2-Bakery</option>
+            			<option value="3">3-Fruits and vegetables</option>
+            			<option value="4">4-snacks</option>
+					</select>
+				</div>
+			</div>
+      <div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="brand-form">
+					Enter Product Brand
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="brand-form" 
+					   formControlName="brand">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('brand').invalid && addProductForm.get('brand').touched">
+						Please enter valid product brand name!
+					</span>
+				</div>
+			</div>
+		</div>
+  
+    <div class="row">
+			<div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="quantity-type-form">
+				   Enter Quantity Type:
+				</label>
+        	<div class="row ">
+            <select class="form-control" formControlName="type">
+                  <option value="1">1-numbers</option>
+                  <option value="2">2-packets</option>
+                  <option value="3">3-kg's</option>
+            </select>
+       		</div>
+			<div>
+				<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+				<span class="text-danger small" *ngIf="addProductForm.get('type').invalid && addProductForm.get('type').touched">
+					Please enter valid type !
+				</span>
+			</div>
+      </div>
+      
+			<div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="rate-form">
+					Enter rate per quantity
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="rate-form" 
+					   formControlName="ratePerQuantity">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('ratePerQuantity').invalid && addProductForm.get('ratePerQuantity').touched">
+						Please enter valid rate per quantity!
+					</span>
+				</div>
+      </div>
+      
+			<div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<div class="row"> 
+					<label for="stockCount">
+						Enter Stock Count
+					</label>
+				</div>
+				<input type="text" 
+					   class="form-control" 
+					   id="stock-count-form" 
+             formControlName="stockCount">
+        <div>
+        <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+          <span class="text-danger small" *ngIf="addProductForm.get('stockCount').invalid && addProductForm.get('stockCount').touched">
+                Please enter valid stock count!
+          </span>
+        </div>
+      </div>
+      
+      <div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="add-date-form">
+					Enter Product add date:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="add-date-form" 
+					   formControlName="addDate">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('addDate').invalid && addProductForm.get('addDate').touched">
+						Please enter valid product add date!
+					</span>
+				</div>
+			</div>
+    </div>
+    
+    <div class="row">
+      <div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="aisle-form">
+					Enter aisle:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="aisle-form" 
+					   formControlName="aisle">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('aisle').invalid && addProductForm.get('aisle').touched">
+						Please enter valid aisle!
+					</span>
+				</div>
+			</div>
+      
+			<div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="shelf-form">
+					Enter shelf:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="shelf-form" 
+					   formControlName="shelf">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('shelf').invalid && addProductForm.get('shelf').touched">
+						Please enter valid shelf number!
+					</span>
+				</div>
+      </div>
+      
+		 
+      <div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="mfg-form">
+					Enter Product MFG Date:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="mfg-form" 
+					   formControlName="dateOfManufacture">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('dateOfManufacture').invalid && addProductForm.get('dateOfManufacture').touched">
+						Please enter valid mfg date!
+					</span>
+				</div>
+			</div>
+      
+      <div class="form-group col-lg-3 col-md-6 col-sm-12">
+				<label for="exp-form">
+					Enter Product EXP date:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="exp-form" 
+					   formControlName="dateOfExpiry">
+				<div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('dateOfExpiry').invalid && addProductForm.get('dateOfExpiry').touched">
+						Please enter valid product add date!
+					</span>
+				</div>
+			</div>
+		</div>
+    
+    <div class="row">
+			<div class="form-group col-lg-12 col-md-12 col-sm-12">
+				<label for="image-form">
+					Enter Image url:
+				</label>
+				<input type="text" 
+					   class="form-control" 
+					   id="image-form" 
+					   formControlName="image">
+        <div>
+					<span [style.visibility]="'hidden'" class="text-danger small">s</span>
+					<span class="text-danger small" *ngIf="addProductForm.get('image').invalid && addProductForm.get('image').touched">
+						Please enter valid product image url!
+					</span>
+				</div>
+			</div>
+    </div>
+    
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<button class="btn btn-primary" 
+						type="submit" 
+						value="submit" 
+						(click)="onSubmit(addProductForm)"
+					   >Submit</button>
+			</div>
+		</div>
+	</form> <br><br>
+</section>
+
+<footer class="footer">
+	<nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+		<div class="footer-bottom ">
+			<div class="row ">
+				<div>
+					Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+				</div>
+				<div class="ml-auto">
+					Follow us on:
+					<a href="#" class="fa fa-facebook"></a>
+					<a href="#" class="fa fa-twitter"></a>
+					<a href="#" class="fa fa-instagram"></a>
+				</div>
+			</div>
+		</div>
+	</nav>
+</footer>

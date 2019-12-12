@@ -1,0 +1,135 @@
+<app-header></app-header>
+<br>
+
+<section class="container-fluid mt-5" *ngIf='!isGetDetailsClicked' ><br><br>
+	<div class="row">
+		<div class="col-lg-2 col-sm-12">
+		</div>
+		<div class="col-lg-8 col-sm-12  bg-light"><br><br>
+      <div class="d-flex justify-content-between"><h1 *ngIf='!isGetDetailsClicked'>Purchase History</h1>
+        <h1 *ngIf='isGetDetailsClicked'>Bill Id: {{billId}}</h1>
+        <h2 class="ml-auto">User Id: {{userId}}</h2></div>
+
+      <table class="table table-bordered table-hover  text-dark"  *ngIf='!isGetDetailsClicked'>
+        <thead>
+          <tr>
+            <th>Bill Id</th>
+            <th>Purchase Date</th>
+            <th>Total</th>
+            <th>options</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let bill of bills">
+          <td>{{bill.id}}</td>
+          <td>{{bill.purchaseDate  | date: 'dd/MM/yyyy'}}</td>
+          <td>{{bill.totalAmount}}</td>
+          <td>
+              <button class="bth btn-primary text-light" (click)="getDetails(bill.billDetailsList, bill.id, bill.totalAmount, bill.rewardPoints, bill.discountedTotal, bill.purchaseDate)">Get Details</button>
+          </td>
+        </tbody>
+      </table>
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf='!isGetDetailsClicked'>
+        <span>
+            <h5 class="text-dark">Total Reward Points</h5>
+        </span>
+        <span class="text-danger">
+            <h5> {{totalRewardPoints}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+        </span>
+    </li> 
+    
+
+      <br><br>
+		</div>
+		<div class="col-lg-2 col-sm-12">
+		</div>
+	</div><br><br>
+</section>
+
+<section class="container-fluid mt-5" *ngIf='isGetDetailsClicked' ><br><br>
+	<div class="row">
+		<div class="col-lg-2 col-sm-12">
+		</div>
+    <div class="col-lg-8 col-sm-12  bg-light"><br><br>
+      
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-danger" *ngIf='bills == null'>
+        <span>
+            <h5 class="text-dark">No Purchase History</h5>
+        </span>
+    </li>
+    <div><h2>Date: {{date | date: 'dd/MM/yyyy' }}</h2></div>
+
+      <div class="d-flex justify-content-between">
+        <h1 *ngIf='isGetDetailsClicked'>Bill Id: {{billId}}</h1>
+        <h2 class="ml-auto">User Id: {{userId}}</h2></div>
+
+        <table class="table table-bordered table-hover  text-dark"  *ngIf='isGetDetailsClicked'>
+            <thead>
+              <tr>
+                <th>Product code</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Rate per quantity</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of products">
+              <td>{{product.productCode}}</td>
+              <td>{{product.productName}}</td>
+              <td>{{product.quantity}}</td>
+              <th>{{product.ratePerQuantity}}</th>
+            </tbody>
+          </table>
+         
+           <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf='isGetDetailsClicked'>
+              <span>
+                  <h5 class="text-dark">Total</h5>
+              </span>
+              <span class="text-danger">
+                  <h5> &#8377; {{total}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+              </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf='isGetDetailsClicked'>
+              <span>
+                  <h5 class="text-dark">Discounted Total</h5>
+              </span>
+              <span class="text-danger">
+                  <h5> &#8377; {{discountedTotal}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+              </span>
+          </li>
+           <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf='isGetDetailsClicked'>
+            <span>
+                <h5 class="text-dark">Reward Points</h5>
+            </span>
+            <span class="text-danger">
+                <h5>{{reward}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+            </span>
+        </li> 
+        
+        <button *ngIf='isGetDetailsClicked' class="bth btn-primary text-light" (click)="back()">Back</button> 
+        
+
+      <br><br>
+		</div>
+		<div class="col-lg-2 col-sm-12">
+		</div>
+	</div><br><br>
+</section>
+
+
+
+<footer class="footer fixed-bottom">
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+    <div class="footer-bottom ">
+      <div class="row ">
+        <div>
+          Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="ml-auto">
+          Follow us on:
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-instagram"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</footer>

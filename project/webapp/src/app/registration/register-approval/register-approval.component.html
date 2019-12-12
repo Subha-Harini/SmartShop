@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<section class="container mt-5 "><br><br>
+	<div class="row">
+		<div class="col-lg-2 col-sm-12">
+		</div>
+		<div class="col-lg-8 col-sm-12  bg-light"><br><br>
+			<h1>User Approval</h1>
+			<ul class="list-group bg-danger" *ngIf="nullList">
+				<li class="list-group-item " id="list-empty-notification-section">
+					No Users in the List.
+				</li>
+			</ul>
+			<ul class="list-group bg-success" 
+				*ngIf="isApproved">
+				<li class="list-group-item " id="list-approved-notification-section">
+					User approved
+				</li>
+			</ul>
+			<ul class="list-group bg-success" 
+				*ngIf="isDeclined">
+				<li class="list-group-item " id="list-declined-notification-section">
+					User declined
+				</li>
+			</ul>
+			<ul class="list-group" *ngIf="noOfFavorites != 0 ">
+				<li class="list-group-item d-flex justify-content-between align-items-center"
+					*ngFor="let user of pendingUsers">
+					<span>
+						<h3 class="text-secondary">{{user.firstName}}</h3>
+						<h5>UserId: {{ user.userId }}</h5>
+					</span>
+					<span class="text-danger">
+						<button type="button" class="btn bg-primary text-light" (click)="approveUser(user.userId)">
+						   Approve</button>
+						 <button type="button" class="btn bg-danger text-light" (click)="declineUser(user.userId)">
+						   Decline</button>
+					</span>
+				</li>
+            </ul>
+      <br><br>
+		</div>
+		<div class="col-lg-2 col-sm-12">
+		</div>
+	</div><br><br>
+</section>
+
+<footer class="footer fixed-bottom">
+	<nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+		<div class="footer-bottom ">
+			<div class="row ">
+				<div>
+					Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+				</div>
+				<div class="ml-auto">
+					Follow us on:
+					<a href="#" class="fa fa-facebook"></a>
+					<a href="#" class="fa fa-twitter"></a>
+					<a href="#" class="fa fa-instagram"></a>
+				</div>
+			</div>
+		</div>
+	</nav>
+</footer>

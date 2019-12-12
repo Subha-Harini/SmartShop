@@ -1,0 +1,379 @@
+<app-header></app-header>
+<div class="container mt-2 mb-5 ">
+  <br><br>
+  <div class="row">
+    <div class="col-lg-2 col-sm-12">
+    </div>
+    <div class="col-lg-8 col-sm-12 border bg-light"><br><br>
+      <form [formGroup]="signupForm" method="post">
+        <h1>Registration Form</h1><br>
+       
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="firstname">
+                First name 
+                <span class="text-danger"> * </span>
+              </label>
+              <input type="text" 
+                     [ngClass]="[(signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched) && signupForm.controls.firstName.valid ? 'is-valid' : '',
+                            (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched) && signupForm.controls.firstName.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.firstName.valid || signupForm.controls.firstName.invalid) ? 'form-control' : '']"
+                     id="firstname" 
+                     name="firstname" 
+                     formControlName="firstName">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('firstName').invalid && signupForm.get('firstName').touched">
+                  Please enter valid firstName !
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="lastname">
+                Last name 
+                <span class="text-danger"> * </span>
+              </label>
+              <input type="text" 
+                    [ngClass]="[(signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched) && signupForm.controls.lastName.valid ? 'is-valid' : '',
+                                (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched) && signupForm.controls.lastName.invalid ? 'is-invalid' : '', 
+                                (signupForm.controls.lastName.valid || signupForm.controls.lastName.invalid) ? 'form-control' : '']"
+                     id="lastname" 
+                     name="lastname" 
+                     formControlName="lastName">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('lastName').invalid && signupForm.get('lastName').touched">
+                  Please enter valid lastName !
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="gender">
+                Age
+                <span class="text-danger"> * </span>
+              </label>
+              <input type="text" 
+                    [ngClass]="[(signupForm.controls.age.dirty || signupForm.controls.age.touched) && signupForm.controls.age.valid ? 'is-valid' : '',
+                                (signupForm.controls.age.dirty || signupForm.controls.age.touched) && signupForm.controls.age.invalid ? 'is-invalid' : '', 
+                                (signupForm.controls.age.valid || signupForm.controls.age.invalid) ? 'form-control' : '']" 
+                     id="age" 
+                     name="age" 
+                     formControlName="age">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('age').invalid && signupForm.get('age').touched">
+                  Please enter valid age !
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="gender">
+                Gender
+                <span class="text-danger"> * </span>
+              </label>
+              <select
+                      [ngClass]="[(signupForm.controls.gender.dirty || signupForm.controls.gender.touched) && signupForm.controls.gender.valid ? 'is-valid' : '',
+                                  (signupForm.controls.gender.dirty || signupForm.controls.gender.touched) && signupForm.controls.gender.invalid ? 'is-invalid' : '', 
+                                  (signupForm.controls.gender.valid || signupForm.controls.gender.invalid) ? 'form-control' : '']"  
+                      formControlName="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('gender').invalid && signupForm.get('gender').touched">
+                  Please enter gender!
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="contactNumber">
+                Contact Number
+                <span class="text-danger"> * </span>
+              </label>
+              <input type="text" 
+                     [ngClass]="[(signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched) && signupForm.controls.contactNumber.valid ? 'is-valid' : '',
+                                 (signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched) && signupForm.controls.contactNumber.invalid ? 'is-invalid' : '', 
+                                 (signupForm.controls.contactNumber.valid || signupForm.controls.contactNumber.invalid) ? 'form-control' : '']"  
+                     id="contactNumber" 
+                     name="contactNumber" 
+                     formControlName="contactNumber">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('contactNumber').invalid && signupForm.get('contactNumber').touched">
+                  Please enter valid 10 digit contactNumber!
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="userId">
+                User Id
+                <span class="text-danger"> * </span>
+              </label>
+               <input type="text" 
+                      [ngClass]="[(signupForm.controls.userId.dirty || signupForm.controls.userId.touched) && signupForm.controls.userId.valid ? 'is-valid' : '',
+                                 (signupForm.controls.userId.dirty || signupForm.controls.userId.touched) && signupForm.controls.userId.invalid ? 'is-invalid' : '', 
+                                (signupForm.controls.userId.valid || signupForm.controls.userId.invalid) ? 'form-control' : '']"  
+                      id="userId" 
+                      name="userId" 
+                      formControlName="userId">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('userId').invalid && signupForm.get('userId').touched">
+                  Please enter valid userId!
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="password">
+                Password 
+                <span class="text-danger"> * </span>
+              </label>
+              <input #password 
+                    type="password" 
+                    [ngClass]="[(signupForm.controls.password.dirty || signupForm.controls.password.touched) && signupForm.controls.password.valid ? 'is-valid' : '',
+                                 (signupForm.controls.password.dirty || signupForm.controls.password.touched) && signupForm.controls.password.invalid ? 'is-invalid' : '', 
+                                (signupForm.controls.password.valid || signupForm.controls.password.invalid) ? 'form-control' : '']"  
+                    id="password" 
+                    name="password"
+                    formControlName="password">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">
+                  Please enter password !
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="userType">
+                 User Type 
+                 <span class="text-danger"> * </span>
+              </label>
+                    <div class="form-inline">
+                        <div class="custom-control custom-radio">
+                            <input  type="radio" 
+                                    class="custom-control-input" 
+                                    id="Manager" 
+                                    name="userType"
+                                    formControlName="userType"
+                                    value="A">
+                                <label class="custom-control-label" for="Manager">Manager &nbsp; &nbsp;</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input  type="radio" 
+                                    class="custom-control-input" 
+                                    id="User" 
+                                    name="userType" 
+                                    checked
+                                    formControlName="userType"
+                                    value="U">
+                            <label class="custom-control-label" for="User">User</label>
+                        </div>
+                    </div>
+              
+
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('userType').invalid && signupForm.get('userType').touched">
+                  Please enter usertype!
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="secretQuestionOne">
+                Secret Question One
+                <span class="text-danger"> * </span>
+              </label>
+              <select [ngClass]="[(signupForm.controls.secretQuestionOne.dirty || signupForm.controls.secretQuestionOne.touched) && signupForm.controls.secretQuestionOne.valid ? 'is-valid' : '',
+                                  (signupForm.controls.secretQuestionOne.dirty || signupForm.controls.secretQuestionOne.touched) && signupForm.controls.secretQuestionOne.invalid ? 'is-invalid' : '', 
+                                  (signupForm.controls.secretQuestionOne.valid || signupForm.controls.secretQuestionOne.invalid) ? 'form-control' : '']" 
+                      formControlName="secretQuestionOne">
+                <option value="What is your first school?">What is your first school?</option>
+                <option value="What is your favourite pet?">Which is your favourite pet?</option>
+              </select>
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('secretQuestionOne').invalid && signupForm.get('secretQuestionOne').touched">
+                  Please enter secret question !
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="secretAnswerOne">
+                Secret Answer One
+                <span class="text-danger"> * </span>
+              </label>
+              <input 
+                     type="text" 
+                     [ngClass]="[(signupForm.controls.secretAnswerOne.dirty || signupForm.controls.secretAnswerOne.touched) && signupForm.controls.secretAnswerOne.valid ? 'is-valid' : '',
+                                 (signupForm.controls.secretAnswerOne.dirty || signupForm.controls.secretAnswerOne.touched) && signupForm.controls.secretAnswerOne.invalid ? 'is-invalid' : '', 
+                                 (signupForm.controls.secretAnswerOne.valid || signupForm.controls.secretAnswerOne.invalid) ? 'form-control' : '']" 
+                     id="secretAnswerOne" 
+                     name="secretAnswerOne"
+                     formControlName="secretAnswerOne">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('secretAnswerOne').invalid && signupForm.get('secretAnswerOne').touched">
+                  Please enter secret Answer!
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="secretQuestionTwo">
+                Secret Question Two
+                <span class="text-danger"> * </span>
+              </label>
+              <select [ngClass]="[(signupForm.controls.secretQuestionTwo.dirty || signupForm.controls.secretQuestionTwo.touched) && signupForm.controls.secretQuestionTwo.valid ? 'is-valid' : '',
+                                  (signupForm.controls.secretQuestionTwo.dirty || signupForm.controls.secretQuestionTwo.touched) && signupForm.controls.secretQuestionTwo.invalid ? 'is-invalid' : '', 
+                                  (signupForm.controls.secretQuestionTwo.valid || signupForm.controls.secretQuestionTwo.invalid) ? 'form-control' : '']" 
+                      formControlName="secretQuestionTwo">
+                <option value="What is your fatehr's name?">What is your father's name?</option>
+                <option value="What is your mother's name?">Which is your mother's name?</option>
+              </select>
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('secretQuestionTwo').invalid && signupForm.get('secretQuestionTwo').touched">
+                  Please enter secret question !
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="secretAnswerTwo">
+                Secret Answer Two
+                <span class="text-danger"> * </span>
+              </label>
+              <input 
+                     type="text" 
+                     [ngClass]="[(signupForm.controls.secretAnswerTwo.dirty || signupForm.controls.secretAnswerTwo.touched) && signupForm.controls.secretAnswerTwo.valid ? 'is-valid' : '',
+                                 (signupForm.controls.secretAnswerTwo.dirty || signupForm.controls.secretAnswerTwo.touched) && signupForm.controls.secretAnswerTwo.invalid ? 'is-invalid' : '', 
+                                 (signupForm.controls.secretAnswerTwo.valid || signupForm.controls.secretAnswerTwo.invalid) ? 'form-control' : '']" 
+                     id="secretAnswerTwo" 
+                      name="secretAnswerTwo"
+                      formControlName="secretAnswerTwo">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('secretAnswerTwo').invalid && signupForm.get('secretAnswerTwo').touched">
+                  Please enter secret Answer!
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="secretQuestionThree">
+                Secret Question Three
+                <span class="text-danger"> * </span>
+              </label>
+              <select  [ngClass]="[(signupForm.controls.secretQuestionThree.dirty || signupForm.controls.secretQuestionThree.touched) && signupForm.controls.secretQuestionThree.valid ? 'is-valid' : '',
+                                   (signupForm.controls.secretQuestionThree.dirty || signupForm.controls.secretQuestionThree.touched) && signupForm.controls.secretQuestionThree.invalid ? 'is-invalid' : '', 
+                                   (signupForm.controls.secretQuestionThree.valid || signupForm.controls.secretQuestionThree.invalid) ? 'form-control' : '']"  
+                       formControlName="secretQuestionThree">
+                <option value="What is your favourite color?">What is your favourite color?</option>
+                <option value="What is your favourite sport?">Which is your favourite sport?</option>
+              </select>
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('secretQuestionThree').invalid && signupForm.get('secretQuestionThree').touched">
+                  Please enter secret question !
+                </span></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="secretAnswerThree">
+                Secret Answer Three
+                <span class="text-danger"> * </span>
+              </label>
+              <input 
+                     type="text" 
+                     [ngClass]="[(signupForm.controls.secretAnswerThree.dirty || signupForm.controls.secretAnswerThree.touched) && signupForm.controls.secretAnswerThree.valid ? 'is-valid' : '',
+                                   (signupForm.controls.secretAnswerThree.dirty || signupForm.controls.secretAnswerThree.touched) && signupForm.controls.secretAnswerThree.invalid ? 'is-invalid' : '', 
+                                   (signupForm.controls.secretAnswerThree.valid || signupForm.controls.secretAnswerThree.invalid) ? 'form-control' : '']"  
+                     id="secretAnswerThree" 
+                      name="secretAnswerThree"
+                      formControlName="secretAnswerThree">
+              <div><span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                <span class="text-danger small"
+                  *ngIf="signupForm.get('secretAnswerThree').invalid && signupForm.get('secretAnswerThree').touched">
+                  Please enter secret Answer!
+                </span></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+            <button class="btn btn-primary"
+                    type="button" 
+                    (click)="onSubmit(signupForm)"
+                    [disabled]="!signupForm.valid">
+                        Register
+            </button>
+          </div>
+        </div>
+
+        <div id="notification" class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+            <span class="badge badge-success" *ngIf="userCreated">New User created Suceesfully <a (click)="login()" >Login here</a></span>
+            <span class="badge badge-danger" *ngIf="error != null">{{error}}</span>
+          </div>
+        </div>
+
+
+      </form><br><br>
+    </div>
+    <div class="col-lg-2 col-sm-12">
+    </div>
+  </div>
+  <br><br>
+</div>
+
+<footer class="footer">
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark text-light mt-5">
+    <div class="footer-bottom ">
+      <div class="row ">
+        <div>
+          Copyright &copy; 2019&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="ml-auto">
+          Follow us on:
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-instagram"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</footer>
