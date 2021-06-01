@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cognizant.productservice.ProductServiceApplication;
-import com.cognizant.productservice.model.Product;
+import com.demo.resuable.dataaccesslayer.entities.Product;
 import com.cognizant.productservice.service.ProductService;
 
 @RestController

@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cognizant.smartshop.signupservice.SignupServiceApplication;
-import com.cognizant.smartshop.signupservice.exception.UserAlreadyExistsException;
-import com.cognizant.smartshop.signupservice.model.User;
+
+import com.demo.resuable.dataaccesslayer.entities.User;
+import com.demo.resuable.exceptionhandler.exception.UserAlreadyExistsException;
 import com.cognizant.smartshop.signupservice.service.UserService;
 
 

@@ -8,11 +8,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cognizant.productservice.exception.OfferAlreadyExistsException;
-import com.cognizant.productservice.model.Offer;
-import com.cognizant.productservice.model.Product;
-import com.cognizant.productservice.repository.OfferRepository;
-import com.cognizant.productservice.repository.ProductRepository;
+
+import com.demo.resuable.dataaccesslayer.entities.Offer;
+import com.demo.resuable.dataaccesslayer.entities.Product;
+import com.demo.resuable.dataaccesslayer.repository.interfaces.OfferRepository;
+import com.demo.resuable.dataaccesslayer.repository.interfaces.ProductRepository;
+import com.demo.resuable.exceptionhandler.exception.OfferAlreadyExistsException;
 
 @Service
 public class OfferService {

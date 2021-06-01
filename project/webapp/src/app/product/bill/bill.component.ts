@@ -46,7 +46,7 @@
         this.code = response;
       });
       this.billService.getCustomers().subscribe((response) => {
-        console.log(response);
+        //console.log(response);
         this.customers = response;
         console.log(this.customers)
       })

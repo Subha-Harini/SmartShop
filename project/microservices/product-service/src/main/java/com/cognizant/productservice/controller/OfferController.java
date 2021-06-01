@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cognizant.productservice.exception.OfferAlreadyExistsException;
-import com.cognizant.productservice.model.Offer;
+import com.demo.resuable.dataaccesslayer.entities.Offer;
+import com.demo.resuable.exceptionhandler.exception.OfferAlreadyExistsException;
 import com.cognizant.productservice.service.OfferService;
 
 @RestController

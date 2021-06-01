@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:int-http="http://www.springframework.org/schema/integration/http"
+       xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-5.0.xsd
+		http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http-5.0.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-5.0.xsd">
+
+ <context:component-scan base-package="com.demo"/>
+<bean id="productMessageStore"
+          class="org.springframework.integration.store.SimpleMessageStore"/>
+          
+  <int-jms:message-driven-channel-adapter
+            id="jmsConnectionAdaptor" destination-name="expiryQueue"
+            acknowledge="transacted" channel="expiryQueueRequest"
+            max-concurrent-consumers="1" connection-factory="activemqConnectionFactoryBean"/>
+   
+   
+   <int:channel id="expiryQueueRequest"/>
+   <int:chain id="getAllExpiredProducts" input-channel="expiryQueueRequest" output-channel="listMessssageSplitter">
+        <int:service-activator ref="productOrchestratorImpl" method="processInboundMessage"/>
+    </int:chain>
+    
+    <bean id="splitterBean" class="com.demo.productorchestrator.impl.Splitter"></bean>
+    
+    <int:channel id="listMessssageSplitter"/>
+    <int:splitter input-channel="listMessssageSplitter" output-channel="setExpiryFlagToTrue" 
+         ref="splitterBean" method="split"></int:splitter>
+         
+     
+    <int:channel id="setExpiryFlagToTrue"/>
+   <int:chain input-channel="setExpiryFlagToTrue" output-channel="updateDatabase" >
+        <int:service-activator ref="productOrchestratorImpl" method="getProductData"/>
+    </int:chain>
+         
+     
+    <int:channel id="updateDatabase"/>
+   <int:chain input-channel="updateDatabase" output-channel="dummyChannel" >
+        <int:service-activator ref="productOrchestratorImpl" method="printMessageUsingJmsId"/>
+        <int:header-enricher>
+        	<int:header name="contentType" value="multipart/form-data" overwrite="true"></int:header>
+        </int:header-enricher>
+        <int-http:outbound-gateway http-method="POST" expected-response-type="java.util.Map"
+                 url="http://localhost:8410/smart-shop/updateExpiryProducts">
+        </int-http:outbound-gateway>
+    </int:chain>
+    
+    
+     <int:channel id="dummyChannel"/>
+    <int:service-activator  input-channel="dummyChannel" ref="productOrchestratorImpl" method="dummymethod"/>
+   
+</beans>

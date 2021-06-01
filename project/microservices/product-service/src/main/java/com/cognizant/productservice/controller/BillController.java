@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cognizant.productservice.exception.ProductExpiredException;
-import com.cognizant.productservice.model.Bill;
-import com.cognizant.productservice.model.User;
-import com.cognizant.productservice.model.UserBill;
+
 import com.cognizant.productservice.service.BillService;
 import com.cognizant.productservice.service.UserService;
+import com.demo.resuable.dataaccesslayer.entities.Bill;
+import com.demo.resuable.dataaccesslayer.entities.User;
+import com.demo.resuable.dataaccesslayer.entities.UserBill;
+import com.demo.resuable.exceptionhandler.exception.ProductExpiredException;
 
 @RestController
 @RequestMapping("/smart-shop")

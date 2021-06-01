@@ -2,8 +2,9 @@ package com.cognizant.smartshop.signupservice.service;
 
 import java.util.List;
 
-import com.cognizant.smartshop.signupservice.exception.UserAlreadyExistsException;
-import com.cognizant.smartshop.signupservice.model.User;
+
+import com.demo.resuable.dataaccesslayer.entities.User;
+import com.demo.resuable.exceptionhandler.exception.UserAlreadyExistsException;
 
 public interface UserService {
 	

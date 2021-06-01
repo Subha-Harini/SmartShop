@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../registration/authentication.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ProductDetails, ProductDetailsPojo } from './productDetails';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,7 @@ export class BillService {
     for( let i = 0; i < productList.length; i++){
       productDetails.push({productCode: productList[i].productCode,quantity: productList[i].quantity})
     }
+    console.log(bill.purchaseDate);
     var dateParts = bill.purchaseDate.split("/");
     var dateObject = new Date(+dateParts[2], dateParts[1] -1 , +dateParts[0]); 
     let body = {
@@ -33,7 +34,7 @@ export class BillService {
       billId: 0,
     };
     console.log(body);
-    return this.httpClient.post("http://localhost:8083/product-service/smart-shop/bills", body, httpOptions);
+    return this.httpClient.post(environment.baseUrl+"/product-service/smart-shop/bills", body, httpOptions);
 
   }
 

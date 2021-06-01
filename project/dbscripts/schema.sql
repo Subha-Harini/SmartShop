@@ -142,6 +142,7 @@ INSERT into `smart_shop`.`product` values (14,'Dragon Fruit',3,'Farm Fresh',3,'1
 INSERT into `smart_shop`.`product` values (15,'Papaya',3,'Farm Fresh',3,'150','100','2019-03-15','2','1','2017-05-24','2020-04-09','https://cdn.cdnparenting.com/articles/2018/12/27164729/1177502098-H.jpg');
 INSERT into `smart_shop`.`product` values (16,'Popcorn',4,'Aci2',3,'150','100','2019-03-15','2','1','2017-05-24','2020-04-09','https://image.shutterstock.com/image-photo/popcorn-striped-bucket-isolated-on-260nw-175375529.jpg');
 
+update product set pt_is_expired=b'0' where pt_code = 2;
 SELECT * FROM offer;
 SELECT * FROM user ;
 desc user;
@@ -169,3 +170,9 @@ Order by sum(quantity) desc;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+use smart_shop;
+select * from product where pt_code in (2, 5,6,11,12,13,14,16);
+update product set pt_is_expired=b'0' where pt_code = 2;
+
+desc product;

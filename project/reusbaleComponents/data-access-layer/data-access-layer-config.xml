@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:amq="http://activemq.apache.org/schema/core"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://activemq.apache.org/schema/core
+http://activemq.apache.org/schema/core/activemq-core-5.5.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/jms
+http://www.springframework.org/schema/jms/spring-jms.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+   <bean id="prodRepoManager"
+		  class="com.demo.resuable.dataaccesslayer.repositorymanager.ProductRepoManager">
+		<property name="productRepoImpl" ref="mysql-product-repo"></property>
+	</bean>
+	
+	<bean id="billRepoManager"
+		  class="com.demo.resuable.dataaccesslayer.repositorymanager.BillRepoManager">
+		<property name="billRepoImpl" ref="mysql-bill-repo"></property>
+	</bean>
+	
+	<bean id="offerRepoManager"
+		  class="com.demo.resuable.dataaccesslayer.repositorymanager.OfferRepoManager">
+		<property name="offerRepoImpl" ref="mysql-offer-repo"></property>
+	</bean>
+	
+	<bean id="userRepoManager"
+		  class="com.demo.resuable.dataaccesslayer.repositorymanager.UserRepoManager">
+		<property name="userRepoImpl" ref="mysql-user-repo"></property>
+	</bean>
+</beans>

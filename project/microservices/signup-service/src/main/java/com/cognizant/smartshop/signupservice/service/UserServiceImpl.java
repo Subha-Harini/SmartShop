@@ -14,9 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cognizant.smartshop.signupservice.SignupServiceApplication;
-import com.cognizant.smartshop.signupservice.exception.UserAlreadyExistsException;
-import com.cognizant.smartshop.signupservice.model.User;
-import com.cognizant.smartshop.signupservice.repository.UserRepository;
+import com.demo.resuable.dataaccesslayer.entities.User;
+import com.demo.resuable.dataaccesslayer.repository.interfaces.UserRepository;
+import com.demo.resuable.exceptionhandler.exception.UserAlreadyExistsException;
 
 
 @Service

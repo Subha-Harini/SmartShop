@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:amq="http://activemq.apache.org/schema/core"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://activemq.apache.org/schema/core
+http://activemq.apache.org/schema/core/activemq-core-5.5.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/jms
+http://www.springframework.org/schema/jms/spring-jms.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="redeliveryPolicy"
+          class="org.apache.activemq.RedeliveryPolicy">
+        <property name="maximumRedeliveries" value="3"/>
+    </bean>
+
+    <bean id="activemqConnectionFactoryBean"
+          class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="redeliveryPolicy" ref="redeliveryPolicy"/>
+        <property name="brokerURL" value="tcp://localhost:61616?trace=false"/>
+        <property name="userName" value="admin"/>
+        <property name="password" value="admin"/>
+    </bean>
+    
+    <!-- <bean id="messageSenderImpl"
+          class="com.demo.scheduledproductservice.service.ProductMessageSenderImpl" depends-on="activemqConnectionFactoryBean"  autowire="byName">
+		  <property name="jmsTemplate" ref="jmsTemplate"/> 
+    </bean> -->
+    
+    
+
+    <bean id="connectionFactory"
+          class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory"
+                  ref="activemqConnectionFactoryBean"/>
+        <property name="sessionCacheSize" value="10"/>
+        <property name="cacheProducers" value="false"/>
+    </bean>
+    
+    
+     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="receiveTimeout" value="10000" />
+    </bean>
+
+</beans>

@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.cognizant.smartshop.signupservice.controller.UserController;
-import com.cognizant.smartshop.signupservice.model.User;
+import com.demo.resuable.dataaccesslayer.entities.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)

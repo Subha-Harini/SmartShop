@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
  import org.springframework.boot.test.context.SpringBootTest;
 
-import com.cognizant.productservice.exception.OfferAlreadyExistsException;
-import com.cognizant.productservice.model.Offer;
-import com.cognizant.productservice.repository.OfferRepository;
+import com.demo.resuable.dataaccesslayer.entities.Offer;
+import com.demo.resuable.dataaccesslayer.repository.interfaces.OfferRepository;
+import com.demo.resuable.exceptionhandler.exception.OfferAlreadyExistsException;
 import com.cognizant.productservice.service.OfferService;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

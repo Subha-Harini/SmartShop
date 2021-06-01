@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
  import org.springframework.security.core.userdetails.UserDetails;
  import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.cognizant.smartshop.authenticationservice.model.User;
-import com.cognizant.smartshop.authenticationservice.repository.UserRepository;
-import com.cognizant.smartshop.authenticationservice.security.AppUserDetailsService;
+import com.demo.resuable.authorizationlayer.security.AppUserDetailsService;
+import com.demo.resuable.dataaccesslayer.entities.User;
+import com.demo.resuable.dataaccesslayer.repository.interfaces.UserRepository;
 
 import static org.mockito.Mockito.when;
 import org.junit.Test;

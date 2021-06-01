@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
  import org.springframework.boot.test.context.SpringBootTest;
 
-import com.cognizant.productservice.model.Product;
-import com.cognizant.productservice.repository.ProductRepository;
+ import com.demo.resuable.dataaccesslayer.entities.Product;
+ import com.demo.resuable.dataaccesslayer.repository.interfaces.ProductRepository;
 import com.cognizant.productservice.service.ProductService;
 
 import static org.junit.Assert.assertEquals;

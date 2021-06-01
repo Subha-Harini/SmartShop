@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from '../registration/authentication.service';
 import { ProductDetails } from './productDetails';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

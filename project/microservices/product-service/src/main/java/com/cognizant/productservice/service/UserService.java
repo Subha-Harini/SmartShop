@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cognizant.productservice.model.User;
-import com.cognizant.productservice.repository.UserRepository;
+import com.demo.resuable.dataaccesslayer.entities.User;
+import com.demo.resuable.dataaccesslayer.repository.interfaces.UserRepository;
 
 @Service
 public class UserService {
